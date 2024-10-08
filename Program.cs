@@ -42,6 +42,27 @@
 				Console.WriteLine(vehicle);
 			}
 		}
+		// Metod för att lägga till ett fordon
+		static void AddVehicle(List<Vehicle> vehicles, Vehicle vehicle)
+		{
+			vehicles.Add(vehicle);
+			Console.WriteLine($"{vehicle.Brand} {vehicle.Model} har lagts till i listan.");
+		}
+
+		// Metod för att ta bort ett fordon (baserat på index)
+		static void RemoveVehicle(List<Vehicle> vehicles, int index)
+		{
+			if (index >= 0 && index < vehicles.Count)
+			{
+				Vehicle vehicle = vehicles[index];
+				vehicles.RemoveAt(index);
+				Console.WriteLine($"{vehicle.Brand} {vehicle.Model} har tagits bort från listan.");
+			}
+			else
+			{
+				Console.WriteLine("Felaktigt index. Inget fordon togs bort.");
+			}
+		}
 		static List<T> FilterVehicles<T>(List<Vehicle> vehicles) where T : Vehicle
 		{
 			return vehicles.OfType<T>().ToList();
@@ -52,7 +73,6 @@
 			vehicles.Remove(vehicle);
 		}
 	}
-
 	public interface IDriveable
 	{
 		void Drive();
